@@ -1,0 +1,2 @@
+Sandy;	sandy@gmail.com;	hello there!
+Mary;	mary@gmail.com;	Hello from Mary!

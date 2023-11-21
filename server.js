@@ -3,7 +3,7 @@ import cors from 'cors';
 import fs from 'fs';
 import nodemailer from 'nodemailer';
 import  { google } from 'googleapis';
-import { configData } from '../new_portfolio_page_server/config.js';
+import { configData } from './config.js';
 
 const OAuth2 = google.auth.OAuth2;
 const OAuth2_client = new OAuth2(configData.clientId, configData.clientSecret);

@@ -3,11 +3,15 @@ import cors from 'cors';
 import fs from 'fs';
 import nodemailer from 'nodemailer';
 import  { google } from 'googleapis';
-import { configData } from './config.js';
+// import { configData } from './config.js';
 
 const OAuth2 = google.auth.OAuth2;
-const OAuth2_client = new OAuth2(configData.clientId, configData.clientSecret);
-OAuth2_client.setCredentials({ refresh_token : configData.refreshToken});
+// const OAuth2_client = new OAuth2(configData.clientId, configData.clientSecret);
+// OAuth2_client.setCredentials({ refresh_token : configData.refreshToken});
+
+
+const OAuth2_client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET);
+OAuth2_client.setCredentials({ refresh_token : process.env.REFRESH_TOKEN});
 
 
 const app = express();
@@ -37,10 +41,10 @@ app.post('/send-msg', (req, res) => {
         service: 'gmail',
         auth: {
             type: 'OAuth2',
-            user: configData.user,
-            clientId: configData.clientId,
-            clientSecret: configData.clientSecret,
-            refreshToken: configData.refreshToken,
+            user: process.env.USER_EMAIL,
+            clientId: process.env.CLIENT_ID,
+            clientSecret: process.env.CLIENT_SECRET,
+            refreshToken: process.env.REFRESH_TOKEN,
             accessToken: accessToken
         }
     })
